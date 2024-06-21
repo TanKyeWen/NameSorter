@@ -30,4 +30,3 @@ def NameRandomizer(totalGroups, facilitatorDF, total):
     numSequence = list(range(total))
     random.shuffle(numSequence)
 
-    
