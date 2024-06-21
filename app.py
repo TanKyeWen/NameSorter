@@ -26,7 +26,46 @@ totalGroup = int(totalFacilitators/15)
 '''
 
 #To randomize the Facilitators into different groups
-def NameRandomizer(totalGroups, facilitatorDF, total):
-    numSequence = list(range(total))
-    random.shuffle(numSequence)
+def NumRandomizer(totalGroup, facilitatorDF, total):
+    numSequence = random.shuffle(list(range(total)))
 
+'''
+    for i in range(total):
+        groupList(facilitatorDF.iloc[numSequence], i)
+'''
+
+def groupList(facilitatorInfo, group):
+    group1 = []
+    group2 = []
+    group3 = []
+    group4 = []
+    group5 = []
+    group6 = []
+    group7 = []
+    group8 = []
+    group9 = []
+    group10 = []
+    
+    match group:
+        case 1:
+            group1.append(facilitatorInfo)
+        case 2:
+            group2.append(facilitatorInfo)
+        case 3:
+            group3.append(facilitatorInfo)
+        case 4:
+            group4.append(facilitatorInfo)
+        case 5:
+            group5.append(facilitatorInfo)
+        case 6:
+            group6.append(facilitatorInfo)
+        case 7:
+            group7.append(facilitatorInfo)
+        case 8:
+            group8.append(facilitatorInfo)
+        case 9:
+            group9.append(facilitatorInfo)
+        case 10:
+            group10.append(facilitatorInfo)
+
+            
