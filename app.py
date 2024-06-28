@@ -1,6 +1,20 @@
 import pandas as pd
 import random
 
+# TO get user inputs
+def main():
+    print("aa")
+
+# Append user to group 
+def groupList(specificList, num, startRow, startCol):
+    facilitator = pd.DataFrame()
+    facilitator = pd.concat([facilitator, pd.DataFrame(specificList.loc[num]).T])
+
+    specificList.drop(num, inplace = True)
+    specificList.reset_index(drop = True, inplace = True)
+
+    facilitator.to_excel('ModifiedTest.xlsx', index_label = False, startrow = startRow, startcol = startCol)
+
 #file location
 file_loc = "D:\\Self\\NameSorter\\text.xlsx"
 
@@ -18,54 +32,22 @@ experiencedFacilitatorsFemale = facilitatorsList[(facilitatorsList['Experience']
 inexperiencedFacilitatorsMale = facilitatorsList[(facilitatorsList['Experience'] == "No") & (facilitatorsList["Gender"] == "M")].reset_index(drop = True)
 inexperiencedFacilitatorsFemale = facilitatorsList[(facilitatorsList['Experience'] == "No") & (facilitatorsList["Gender"] == "F")].reset_index(drop = True)
 
-#Randomise Facilitators to groups based on Experience and Gender
-'''totalFacilitators = len(facilitatorsList)
+memberPerGroup = 1
+numOfGrp = 2
 
-#Assume max 15 Facilitators per group
-totalGroup = int(totalFacilitators/15)
-'''
+for y in range(numOfGrp):
+    for i in range(memberPerGroup):
+        rng = random.randint(0, len(experiencedFacilitatorsFemale))
+        groupList(experiencedFacilitatorsFemale, rng, 0, y)
 
-#To randomize the Facilitators into different groups
-def NumRandomizer(totalGroup, facilitatorDF, total):
-    numSequence = random.shuffle(list(range(total)))
+    for i in range(memberPerGroup):
+        rng = random.randint(0, len(experiencedFacilitatorsMale))
+        groupList(experiencedFacilitatorsMale, rng, memberPerGroup, y)
 
-'''
-    for i in range(total):
-        groupList(facilitatorDF.iloc[numSequence], i)
-'''
+    for i in range(memberPerGroup): 
+        rng = random.randint(0, len(inexperiencedFacilitatorsFemale))
+        groupList(inexperiencedFacilitatorsFemale, rng, memberPerGroup*2, y)
 
-def groupList(facilitatorInfo, group):
-    group1 = []
-    group2 = []
-    group3 = []
-    group4 = []
-    group5 = []
-    group6 = []
-    group7 = []
-    group8 = []
-    group9 = []
-    group10 = []
-    
-    match group:
-        case 1:
-            group1.append(facilitatorInfo)
-        case 2:
-            group2.append(facilitatorInfo)
-        case 3:
-            group3.append(facilitatorInfo)
-        case 4:
-            group4.append(facilitatorInfo)
-        case 5:
-            group5.append(facilitatorInfo)
-        case 6:
-            group6.append(facilitatorInfo)
-        case 7:
-            group7.append(facilitatorInfo)
-        case 8:
-            group8.append(facilitatorInfo)
-        case 9:
-            group9.append(facilitatorInfo)
-        case 10:
-            group10.append(facilitatorInfo)
-
-            
+    for i in range(memberPerGroup):
+        rng = random.randint(0, len(inexperiencedFacilitatorsMale))
+        groupList(inexperiencedFacilitatorsMale, rng, memberPerGroup*3, y)
