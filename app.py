@@ -16,10 +16,10 @@ def groupList(specificList, num, startRow, startCol):
     facilitator.to_excel('ModifiedTest.xlsx', index_label = False, startrow = startRow, startcol = startCol)
 
 #file location
-file_loc = "D:\\Self\\NameSorter\\text.xlsx"
+file_loc = "./text.xlsx"
 
 #Use Pandas Framework to get all Data from Excel to a tuple
-studentList = pd.read_excel('D:/Project/NameSorter/test.xlsx')
+studentList = pd.read_excel('./test.xlsx')
 
 #Filter out non Facilitators
 facilitatorsList = studentList[studentList['Position'] == 'Facilitators']
