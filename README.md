@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/cb3fdd33-d5aa-4958-9b6e-cea4fc648e2f)# This is a name sorter specifically designed for UTAR Orientation
+# This is a name sorter specifically designed for UTAR Orientation
 
 ## How to Use
 1. Clone the repository
